@@ -1,7 +1,8 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const TeacherNavbar = () => {
-  return (
+const Navbar = () => {
+    return <>
     <div>
       <div className="navbar bg-base-100">
   <div className="navbar-start">
@@ -12,38 +13,32 @@ const TeacherNavbar = () => {
       <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
         <li><a>Item 1</a></li>
         <li>
-          <a>Parent</a>
-          <ul className="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
+        <a >Item 2</a>
         </li>
         <li><a>Item 3</a></li>
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl">daisyUI</a>
+    <Link to='/' className="ml-6"><img src="public\assets\logo2.png" alt=""height='75px' width='150px' /></Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
-      <li><a>Item 1</a></li>
-      <li>
-        <details>
-          <summary>Parent</summary>
-          <ul className="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </details>
-      </li>
-      <li><a>Item 3</a></li>
+      <li><Link to='/' className='text-lg text- font-serif'>Home</Link></li>
+      <li><Link to='/about' className='text-lg text- font-serif'>About US</Link></li>
+      <li><Link to='/jobSection' className='text-lg text- font-serif'>Jobs</Link></li>
     </ul>
   </div>
-  <div className="navbar-end">
-    <a className="btn">Button</a>
+  <div className="navbar-end gap-2">
+  {/* Register */}
+{/* <Link to='/userRegister'> <button className='btn btn-warning' >Register </button> </Link> */}
+
+{/* Login */}
+<Link to='/userLogin'> <button className="btn  bg-violet-900 text-white">Login</button></Link>
+
   </div>
 </div>
     </div>
-  )
+    </>
+  
 }
 
-export default TeacherNavbar
+export default Navbar

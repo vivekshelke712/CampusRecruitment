@@ -13,7 +13,7 @@ const Hero = () => {
                     <h1 class="max-w-2xl mb-4 text-3xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">Grab Your Placement 
                         <Typewriter
   options={{
-    strings: [' As a Full Stack Developer', 'As Data Analyst','As a Data Scientist','As a Java Developer','As a PHP Developer','Tula nahi bhetat '],
+    strings: [' As a Full Stack Developer', 'As Data Analyst','As a Data Scientist','As a Java Developer','As a PHP Developer',],
     autoStart: true,
     loop: true,
     delay: 90,        // Time between each keystroke

@@ -6,6 +6,7 @@ import Navbar from '../../Component/Navbar'
 import Footer from '../../Component/Footer'
 import {useNavigate} from 'react-router-dom'
 import { useRegisterMutation } from '../../redux/api/authApi'
+import {toast} from 'react-hot-toast'
 // import user from '../../../../server/models/user'
 
 const UserRegistration = () => {
@@ -28,7 +29,9 @@ const UserRegistration = () => {
   }
   const navigate = useNavigate()
   useEffect(() => {
-    if(isSuccess){
+    if (isSuccess) {
+      toast.success('Registered Successfully')
+
       navigate('/userLogin')
     }
   }, [isSuccess])

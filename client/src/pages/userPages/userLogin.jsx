@@ -1,7 +1,9 @@
 import { useFormik } from 'formik'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link ,useNavigate} from 'react-router-dom'
 import * as yup from 'yup'
+import {useSelector} from 'react-redux'
+import {toast} from 'react-hot-toast'
 import { useLoginMutation } from '../../redux/api/authApi'
 import UserNavbar from '../../Component/userComponent/UserNavbar'
 import Navbar from '../../Component/Navbar'
@@ -24,7 +26,26 @@ const[loginUser,{isSuccess,isError,error}]  =  useLoginMutation()
         e.preventDefault()
         loginUser(loginData)
 
+  }
+  const navigate = useNavigate()
+  const { user } = useSelector(state => state.user)
+  useEffect(() => {
+    if (user) {
+      if (user.role === "user") {
+       navigate("/userDash")
       }
+      if (user.role === "teacher") {
+        navigate("/admin/dash")
+      }
+   }
+  }, [user])
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success("You are Logged in successfully")
+    }
+  },[isSuccess])
+  
   
   return <>
       <Navbar />

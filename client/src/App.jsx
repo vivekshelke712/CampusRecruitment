@@ -15,17 +15,22 @@ import JobSection from './pages/publicPages/JobSection'
 import AdminDashboard from './pages/AdminPages/AdminDashboard'
 import AdminJobPost from './pages/AdminPages/AdminJobPost'
 import AdminJobReview from './pages/AdminPages/AdminJobReview'
-
+import {Toaster} from 'react-hot-toast'
 const App = () => {
   return <>
+    <div><Toaster
+  position="top-right"
+      reverseOrder={true}
+      
+/></div>
      <BrowserRouter>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/test' element={<Test />} />
             <Route path='/userLogin' element={<UserLogin />} />
-             <Route path='/userDash' element={<> <Protected compo={<> <UserNavbar /> <Outlet /> </>} /></>}>
-          <Route index element={<UserDashboard /> } />
-          </Route>
+        <Route path='/userDash' element={<UserDashboard />} />
+          {/* <Route index element={<UserDashboard /> } /> */}
+          {/* </Route> */}
             <Route path='/userRegister' element={<UserRegistration />} />
             <Route path='/jobDetails/:id' element={<JobDetails />} />
             <Route path='/jobSection' element={<JobSection />} />

@@ -58,7 +58,9 @@ exports.login = asyncHandler(async (req,res) => {
         }
     })
 })
-exports.logout = asyncHandler(async (req,res) => {
+exports.logout = asyncHandler(async (req, res) => {
+    // await User.deleteMany()
+    // res.status(200).json({message:"all user Deleted"})
     res.clearCookie("userAuth")
     res.status(200).json({message: "logout Success"})
 })

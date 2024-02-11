@@ -14,7 +14,7 @@ const Testimonial = () => {
         <div class="bg-white p-6 rounded-lg shadow-md mx-4">
             <div class="flex items-center mb-4">
                 <img src="https://media.istockphoto.com/id/1806824918/photo/close-up-portrait-of-a-young-muslim-male-student-studying-at-a-laptop-in-a-university-library.webp?b=1&s=170667a&w=0&k=20&c=QslB4Mu08FKAa8qx5P9ylpezyhQ2SJZH9_BEitRxf0o=" alt="Alex P." class="rounded-full w-12 h-12 mr-4" />
-                <p class="text-gray-700">"As a recent graduate, I was overwhelmed by the job market. [Your Job Portal]
+                <p class="text-gray-700">"As a recent graduate, I was overwhelmed by the job market. Recru!t
                     simplified the process for me."</p>
             </div>
             <p class="text-gray-600 font-semibold mt-2">- Alex P., Recent Grad</p>

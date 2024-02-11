@@ -1,21 +1,12 @@
 import React from 'react';
-import AdminNavbar from '../../Component/adminComponent/AdminNavbar';
-import Footer from '../../Component/Footer';
+import { useGetAllJobsQuery } from '../../redux/api/userApi';
 
 const AdminDashboard = () => {
-  const jobPosts = [
-    { id: 1, title: 'Software Engineer', company: 'ABC Inc.' },
-    { id: 2, title: 'Graphic Designer', company: 'XYZ Corp.' },
-    { id: 1, title: 'Software Engineer', company: 'ABC Inc.' },
-    { id: 2, title: 'Graphic Designer', company: 'XYZ Corp.' },
-    { id: 1, title: 'Software Engineer', company: 'ABC Inc.' },
-    { id: 2, title: 'Graphic Designer', company: 'XYZ Corp.' },
-    // Add more job posts as needed
-  ];
+  const { data } =  useGetAllJobsQuery()
 
   return (
     <>
-      <AdminNavbar />
+      
       <div className="bg-gray-100 min-h-screen p-8">
         <h2 className="text-2xl font-bold mb-4">Admin Dashboard</h2>
 
@@ -47,14 +38,16 @@ const AdminDashboard = () => {
       <th className="py-2 px-4 border-b ml-6">#</th>
       <th className="py-2 px-4 border-b ml-6">Title</th>
       <th className="py-2 px-4 border-b ml-6">Company</th>
+      <th className="py-2 px-4 border-b ml-6">salary</th>
     </tr>
   </thead>
   <tbody>
-    {jobPosts.map((job) => (
+    { data && data.map((job,i) => (
       <tr key={job.id} className={(job.id % 2 === 0) ? "bg-gray-100" : "bg-white"}>
-        <td className="py-2 px-4 border-b ml-6">{job.id}</td>
-        <td className="py-2 px-4 border-b ml-6">{job.title}</td>
+        <td className="py-2 px-4 border-b ml-6">{ i+1}</td>
+        <td className="py-2 px-4 border-b ml-6">{job.jobTitle}</td>
         <td className="py-2 px-4 border-b ml-6">{job.company}</td>
+        <td className="py-2 px-4 border-b ml-6">{job.salary}</td>
       </tr>
     ))}
   </tbody>
@@ -64,7 +57,7 @@ const AdminDashboard = () => {
 </div>
 
       </div>
-      <Footer />
+      
     </>
   );
 };

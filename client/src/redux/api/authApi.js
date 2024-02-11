@@ -24,6 +24,7 @@ export const authApi = createApi({
                         body: userData
                     }
                 },
+                transformErrorResponse : error => data.message,
                 transformResponse: data => {
                      localStorage.setItem("auth",JSON.stringify(data.result))
                     return data.result

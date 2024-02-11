@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AdminNavbar from '../../Component/adminComponent/AdminNavbar';
 import { useAddjobMutation } from '../../redux/api/adminApi';
+import {toast} from 'react-hot-toast'
 
 const AdminJobPost = () => {
-    const [postJob ,{}] = useAddjobMutation()  
+    const [postJob ,{isSuccess}] = useAddjobMutation()  
   const [jobData, setJobData] = useState({
         jobTitle: '',
         jobRole: '',
@@ -22,6 +23,12 @@ const AdminJobPost = () => {
     e.preventDefault()
     postJob(jobData)
   }
+useEffect(() => {
+  if (isSuccess) {
+    toast.success("Job Added Successfully")
+    
+  }
+}, [isSuccess])
 
     return <>
         <AdminNavbar />

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import {useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { useLogoutMutation } from '../../redux/api/authApi'
 import {toast} from 'react-hot-toast'
 const UserNavbar = () => {
@@ -13,7 +13,10 @@ const UserNavbar = () => {
       navigate("/")
       toast.success("Logged Out Successfully")
     }
-  },[isSuccess]) 
+  }, [isSuccess,user]) 
+  const handleLogout = () => {
+        logout();
+    };
   return (
     <div>
       <div className="navbar bg-base-100">
@@ -28,9 +31,7 @@ const UserNavbar = () => {
         <li><a>Item 3</a></li>
       </ul>
     </div>
-          <div>
-            <img src="client\public\assets\logo2.png" alt="" />
-    </div>
+           <Link to='/' className="ml-6"><img src="public\assets\logo2.png" alt=""height='75px' width='150px' /></Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
@@ -43,7 +44,7 @@ const UserNavbar = () => {
             <div tabIndex={0} role="button" className=" m-1 p-4 rounded-md bg-black text-white">{ `Welcome ${user.name}` }</div>
   <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
               <li>
-                <button onClick={logout}>Logout</button>
+                <button onClick={handleLogout}>Logout</button>
     </li>
     {/* <li><a>Item 2</a></li> */}
   </ul>

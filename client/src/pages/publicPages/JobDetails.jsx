@@ -1,7 +1,10 @@
 import React from 'react'
+import Navbar from '../../Component/Navbar'
+import Footer from '../../Component/Footer'
 
 const JobDetails = () => {
-    return <>
+  return <>
+      <Navbar />
          <div className="min-h-screen w-full bg-gray-100 flex items-center justify-center">
       <div className="w-full max-w-2xl p-8 bg-white shadow-md rounded-md">
         <h1 className="text-3xl font-bold mb-6 text-blue-600">Automation Developer</h1>
@@ -53,6 +56,7 @@ const JobDetails = () => {
         </div>
       </div>
     </div>
+    <Footer />
    </>
 }
 

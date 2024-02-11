@@ -1,8 +1,10 @@
 import React from 'react';
+import {useSelector} from 'react-redux'
 import { Link } from 'react-router-dom';
 import { useGetAllJobsQuery } from '../../redux/api/userApi';
 
 const JobCard = () => {
+    const {user } = useSelector(state => state.user)
     const { data, isLoading, isError } = useGetAllJobsQuery();
 
     
@@ -16,7 +18,7 @@ const JobCard = () => {
     return (
         <>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-    {data.map(item => (
+    {data && data.map(item => (
         <div className="w-full " key={item.id}>
             <div className="card w-96 border m-9 hover:scale-105  text-black">
                 <div className="card-body ">
@@ -28,7 +30,11 @@ const JobCard = () => {
                     <p><strong>Location:</strong> {item.location}</p>
                     <p><strong>Skills:</strong> {item.skills}</p>
                     <div className="card-actions justify-end">
-                        <button className="btn">Apply now</button>
+                        
+                        {
+                            user && user ? <Link to='/jobDetails' className="btn">Apply now</Link> : 
+                          <Link to='/userLogin'><button className='btn '>Login</button></Link>
+                        }
                     </div>
                 </div>
             </div>

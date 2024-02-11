@@ -14,7 +14,7 @@ const[loginUser,{isSuccess,isError,error}]  =  useLoginMutation()
       const [loginData, setloginData] = useState({
         email:"",
         password:"",
-        role:"user"
+        role:""
         
       })
 
@@ -32,10 +32,13 @@ const[loginUser,{isSuccess,isError,error}]  =  useLoginMutation()
   useEffect(() => {
     if (user) {
       if (user.role === "user") {
-       navigate("/userDash")
+       navigate("/user")
       }
       if (user.role === "teacher") {
-        navigate("/admin/dash")
+        navigate("/teacher")
+      }
+      if (user.role === "admin") {
+        navigate("/admin")
       }
    }
   }, [user])
@@ -45,6 +48,11 @@ const[loginUser,{isSuccess,isError,error}]  =  useLoginMutation()
       toast.success("You are Logged in successfully")
     }
   },[isSuccess])
+  useEffect(() => {
+    if (isError) {
+      toast.error(error.message || "Something went wrong Try again")
+    }
+  },[isError])
   
   
   return <>
@@ -115,15 +123,16 @@ const[loginUser,{isSuccess,isError,error}]  =  useLoginMutation()
     </label>
   </div>
   <div className="mt-2 w-full">
-  <select className="select select-info w-full" onChange={handleChange} value={loginData.role}>
+  <select className="select select-info w-full" name='role' onChange={handleChange} value={loginData.role}>
   <option disabled selected>Select language</option>
   <option value="user">user</option>
   <option value="teacher">Teacher</option>
+  <option value="admin">admin</option>
   {/* <option>Teacher</option> */}
 </select>
   </div>
-</div>
-
+          </div>
+          
             <div>
               <button
                 onClick={handleSubmit}

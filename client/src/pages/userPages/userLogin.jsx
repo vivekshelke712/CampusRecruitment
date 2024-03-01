@@ -8,14 +8,17 @@ import { useLoginMutation } from '../../redux/api/authApi'
 import UserNavbar from '../../Component/userComponent/UserNavbar'
 import Navbar from '../../Component/Navbar'
 import Footer from '../../Component/Footer'
+import { IoMdEye ,IoIosEyeOff} from "react-icons/io";
+
+{/* <IoMdEye /> <IoIosEyeOff /> */}
 
 const UserLogin = () => {
+  const [showPassword, setShowPassword] = useState(true)
 const[loginUser,{isSuccess,isError,error}]  =  useLoginMutation()
       const [loginData, setloginData] = useState({
         email:"",
         password:"",
         role:""
-        
       })
 
       const handleChange = (e) => {
@@ -111,7 +114,13 @@ const[loginUser,{isSuccess,isError,error}]  =  useLoginMutation()
                   autoComplete="current-password"
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
+              />
+             
+                {/* {
+                  showPassword ? <IoMdEye onClick={setShowPassword(true)} /> : <IoIosEyeOff onClick={setShowPassword(false)} />
+                 } */}
+              
+              
               </div>
             </div>
 

@@ -5,16 +5,17 @@ import UserNavbar from '../../Component/userComponent/UserNavbar';
 import Footer from '../../Component/Footer';
 import JobDetails from './JobDetails';
 import JobCard from './JobCard';
+import {useSelector} from 'react-redux'
 
 const JobSection = () => {
-  const [isLogin, setisLogin] = useState(true)
+  const {user} = useSelector(state => state.user)
 
 
 
   return <>
     <Navbar />
     {
-      isLogin ?
+      user && (user.role === "user") ?
         <JobCard />
         :<section class="bg-white dark:bg-gray-900">
     <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">

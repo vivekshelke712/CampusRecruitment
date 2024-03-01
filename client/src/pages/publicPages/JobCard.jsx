@@ -32,8 +32,8 @@ const JobCard = () => {
                     <div className="card-actions justify-end">
                         
                         {
-                            user && user ? <Link to='/jobDetails' className="btn">Apply now</Link> : 
-                          <Link to='/userLogin'><button className='btn '>Login</button></Link>
+                            user && (user.role ==="user") ? <Link to='/jobDetails' className="btn">Apply now</Link> : 
+                          <Link to='/userLogin'><button className='btn '>Login As User</button></Link>
                         }
                     </div>
                 </div>

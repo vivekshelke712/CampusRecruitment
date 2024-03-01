@@ -24,6 +24,10 @@ import UserProtected from './share/UserProtected'
 import TeacherProtected from './share/TeacherProtected'
 import TeacherDashboard from './pages/teacherPages/TeacherDashboard'
 import TeacherNavbar from './Component/teacaherComponent/TeacherNavbar'
+import ContactUs from './pages/Shared/ContactUs'
+import HigherEducation from './pages/Shared/HigherEducation'
+import PublicProtected from './share/PublicProtected'
+import Navbar from './Component/Navbar'
 const App = () => {
   return <>
     <div><Toaster
@@ -31,19 +35,28 @@ const App = () => {
       reverseOrder={true}
       
 /></div>
-     <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<Home />} />
+    <BrowserRouter>
+     
+      <Routes>
+        
+                <Route path='/' element={<Home />} />
             <Route path='/test' element={<Test />} />
-            <Route path='/userLogin' element={<UserLogin />} />
+          <Route path='/userLogin' element={<UserLogin />} />
+          <Route path='/userRegister' element={<UserRegistration />} />
+            <Route path='/jobDetails' element={<JobDetails />} />
+            <Route path='/jobSection' element={<JobSection />} />
+            <Route path='/contactus' element={<ContactUs />} />
+            <Route path='/higheredu' element={<HigherEducation />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/enterprenuer' element={<EnterPrenuer />} />
           
           {/* <Route index element={<UserDashboard /> } /> */}
           {/* </Route> */}
-            <Route path='/userRegister' element={<UserRegistration />} />
-            <Route path='/jobDetails' element={<JobDetails />} />
-            <Route path='/jobSection' element={<JobSection />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/enterprenuer' element={<EnterPrenuer />} />
+            
+{/* Public Routes */}
+        {/* <Route path='/' element={<><PublicProtected compo={<><Navbar /> <Outlet /> <Footer /></>} /></>}>
+        
+        </Route> */}
         {/* User Routes */}
         <Route path='/user' element={<> <UserProtected compo={<><UserNavbar /> <Outlet /> <Footer /></>} /></>}>
           <Route index element={<UserDashboard />} />
@@ -63,6 +76,7 @@ const App = () => {
         
             <Route path='*' element={<h1>Page Not Found</h1>} />
       </Routes>
+      
         </BrowserRouter>
   </>
 }

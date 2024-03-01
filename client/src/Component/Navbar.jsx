@@ -1,10 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import {useSelector} from 'react-redux'
+import { useSelector } from 'react-redux'
+import {useNavigate } from 'react-router-dom' 
+import { useLogoutMutation } from '../redux/api/authApi'
+import theme from '../theme'
 
 const Navbar = () => {
   const { user } = useSelector(state => state.user)
-
+  const [logout, { isSuccess, error, isError }] = useLogoutMutation()
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (isSuccess) {
+      navigate('/')
+    }
+  }, [isSuccess])
+  
     return <>
     <div>
       <div className="navbar bg-base-100">
@@ -29,6 +39,8 @@ const Navbar = () => {
       <li><Link to='/about' className='text-lg text- font-serif'>About US</Link></li>
       <li><Link to='/jobSection' className='text-lg text- font-serif'>Jobs</Link></li>
       <li><Link to='/enterprenuer' className='text-lg text- font-serif'>EnterPrenuer</Link></li>
+      <li><Link to='/higheredu' className='text-lg text- font-serif'>Higher Education</Link></li>
+      <li><Link to='/contactus' className='text-lg text- font-serif'>Contact US</Link></li>
     </ul>
   </div>
   <div className="navbar-end gap-2">
@@ -38,7 +50,7 @@ const Navbar = () => {
             {/* Login */}
             {
               user && user ? <button  className='font-bold text-md' onClick={()=>document.getElementById('logout').showModal()}> Welcome <br /> { user.name }</button> 
-                : <Link to='/userLogin'> <button className="btn  bg-violet-900 text-white">SignIn</button></Link>
+                : <Link to='/userLogin'> <button className={`btn btn-${theme.btn}`} >SignIn</button></Link>
      }       
 
 
@@ -53,7 +65,7 @@ const Navbar = () => {
     <div className="modal-action">
       <form method="dialog">
         {/* if there is a button in form, it will close the modal */}
-        <button className="btn btn-error mr-4">YES</button>
+        <button className="btn btn-error mr-4" onClick={logout}>YES</button>
         <button className="btn btn-success">NO</button>
       </form>
     </div>

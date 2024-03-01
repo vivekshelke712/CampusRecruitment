@@ -31,7 +31,7 @@ useEffect(() => {
 }, [isSuccess])
 
     return <>
-        <AdminNavbar />
+        {/* <AdminNavbar /> */}
         <form class="max-w-md mx-auto">
   <div class="relative z-0 w-full mb-5 group">
     <input 

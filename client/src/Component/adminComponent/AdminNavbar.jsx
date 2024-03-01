@@ -1,7 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { useLogoutMutation } from '../../redux/api/authApi'
+import { useNavigate } from 'react-router-dom'
+
 
 const AdminNavbar = () => {
+  const [logout, { isSuccess, error, isError }] = useLogoutMutation()
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (isSuccess) {
+      navigate('/')
+      toast("Admin Logout Successfully")
+    }
+  }, [isSuccess,navigate])
   return (
     <div>
       
@@ -43,7 +54,7 @@ const AdminNavbar = () => {
     <div className="modal-action">
       <form method="dialog">
                   
-        <Link to='/' className="btn btn-error mx-4">Yes</Link>
+        <button onClick={logout} className="btn btn-error mx-4">Yes</button>
         <button className="btn btn-success">No</button>
       </form>
     </div>

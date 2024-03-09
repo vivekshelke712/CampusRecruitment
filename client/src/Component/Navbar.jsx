@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import {useNavigate } from 'react-router-dom' 
 import { useLogoutMutation } from '../redux/api/authApi'
+import { FaBars } from "react-icons/fa";
+import {toast }from 'react-toastify'
 import theme from '../theme'
 
 const Navbar = () => {
@@ -11,9 +13,16 @@ const Navbar = () => {
   const navigate = useNavigate()
   useEffect(() => {
     if (isSuccess) {
+      toast.success("Logout Successful")
+    }
+  }, [isSuccess])
+  
+  useEffect(() => {
+    if (isSuccess) {
       navigate('/')
     }
   }, [isSuccess])
+
   
     return <>
     <div>
@@ -49,7 +58,14 @@ const Navbar = () => {
 
             {/* Login */}
             {
-              user && user ? <button  className='font-bold text-md' onClick={()=>document.getElementById('logout').showModal()}> Welcome <br /> { user.name }</button> 
+              user && user ? <div className="dropdown dropdown-bottom dropdown-end">
+  <div tabIndex={0} role="button" className="text-2xl"> <FaBars /></div>
+  <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                  <li><a>{user.name }</a></li>
+                  <li><Link to='user' >View Profile</Link></li>
+    <li><button onClick={logout}>Logout</button></li>
+  </ul>
+</div>
                 : <Link to='/userLogin'> <button className={`btn btn-${theme.btn}`} >SignIn</button></Link>
      }       
 
@@ -58,19 +74,8 @@ const Navbar = () => {
         </div>
         
       </div>
-      {user && <dialog id="logout" className="modal">
-  <div className="modal-box">
-          <h3 className="font-bold text-lg">Hello! { user.name }</h3>
-    <p className="py-4 text-lg font-bold">Are You sure you want Logout</p>
-    <div className="modal-action">
-      <form method="dialog">
-        {/* if there is a button in form, it will close the modal */}
-        <button className="btn btn-error mr-4" onClick={logout}>YES</button>
-        <button className="btn btn-success">NO</button>
-      </form>
-    </div>
-  </div>
-</dialog>}
+     
+    
      
     </>
   

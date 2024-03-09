@@ -11,9 +11,6 @@ const JobCard = () => {
     if (isLoading) {
         return <div>Loading...</div>;
     }
-
-    
-
     // Render job cards
     return (
         <>

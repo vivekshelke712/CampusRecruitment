@@ -6,7 +6,7 @@ const Testimonial = () => {
 <section class="container mx-auto my-16">
     <div class="text-center mb-8">
         <h2 class="text-3xl font-semibold">What Our Users Say</h2>
-        <p class="text-gray-600  text-2xl mt-2 font-serif">Discover how [Your Job Portal] has made a positive impact on the careers of our users.</p>
+        <p class="text-gray-600  text-2xl mt-2 font-serif">Discover how Recru!t has made a positive impact on the careers of our users.</p>
     </div>
     <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0">
         

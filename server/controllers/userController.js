@@ -10,3 +10,8 @@ exports.AddAllJobs = asyncHandler(async (req, res) => {
     const result = await Jobs.Create()
     res.status(200).json({message:"Jobs Fetch Success",result})
 })
+
+exports.getJobs = asyncHandler(async (req, res) => {
+    const result = await Jobs.find(id)
+    res.status(200).json({message:"Jobs Fetch Success",result})
+})
